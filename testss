@@ -1,1 +1,37 @@
+#ifndef SEQLIST_H_INCLUDED
+#define SEQLIST_H_INCLUDED
+
+#include <stdio.h>      //C语言标准库函数：用于输入和输出的函数、类型和宏。声明文件指针的FILE。常用的类型是size_t和fpos_t。
+#include <malloc.h>     //是动态存储分配函数头文件,当对内存区进行操作时,调用相关函数。
+#include <assert.h>     //assert函数像if判断语句中一样，然后如果该值为真则正常运行，否则报错，并调用abort(),产生异常中断，exit出来。
+//#include <stdbool.h>    //MDK的编译器中不能使用bool类型，是因为没有包含stdbool.h头文件。
+
+#define SEQLIST_INIT_SIZE 8     //定义默认顺序表总长大小为8
+typedef int ElemType;           //用将int宏替换为ElemType
+
+//学数据结构最重要的内容
+typedef struct SeqList
+{
+    ElemType *base;     //指向一个真实开辟的空间
+    int capacity;       //容量：容量是数据表的总长度
+    int size;           //大小：大小是数据表的当前长度
+}SeqList;               //由于typedef，可用Seqlist来宏替换struct SeqList
+
+void InitSeqList(SeqList *List);             //声明初始化函数
+void push_back(SeqList *list,ElemType x);    //声明尾部插入函数
+void push_front(SeqList *list,ElemType x);   //声明头部插入函数
+void show_list(SeqList *list);               //声明显示函数
+void pop_back(SeqList *list);                //声明尾部删除函数
+void pop_front(SeqList *list);               //声明头部删除函数
+void insert_pos(SeqList *list,int pos,ElemType x);   //声明按位置插入函数
+int find(SeqList *list,ElemType key);        //声明查找元素函数
+int length(SeqList *list);                   //声明查数据表的长度函数
+void delete_pos(SeqList *list,int pos);      //声明删除特定位置的函数
+void delete_val(SeqList *list,ElemType key); //声明删除特定元素的函数
+void sort(SeqList *list);                    //声明排序函数
+void resver(SeqList *list);                  //声明逆置函数
+void clear(SeqList *list);                   //声明清除函数
+void destroy(SeqList *list);                 //声明摧毁数据表函数
+
+#endif // SEQLIST_H_INCLUDED
 
